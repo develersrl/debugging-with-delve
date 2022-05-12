@@ -1,0 +1,15 @@
+FROM golang:1.18 AS builder
+
+WORKDIR /
+
+COPY main.go /
+
+RUN CGO_ENABLED=0 go build -gcflags="all=-N -l" -o server main.go
+
+FROM scratch
+
+COPY --from=builder /server /
+
+EXPOSE 12345/tcp
+
+CMD ["/server"]

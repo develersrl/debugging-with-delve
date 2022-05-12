@@ -1,0 +1,9 @@
+FROM golang:1.18 AS builder
+
+RUN go install github.com/go-delve/delve/cmd/dlv@v1.8.3
+
+FROM ubuntu:jammy
+
+COPY --from=builder /go/bin/dlv /
+
+CMD ["bash"]

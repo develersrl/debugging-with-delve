@@ -1,0 +1,20 @@
+FROM golang:1.18 AS builder
+
+RUN go install github.com/go-delve/delve/cmd/dlv@v1.8.3
+
+WORKDIR /
+
+COPY main.go /
+
+RUN go build -gcflags="all=-N -l" -o server main.go
+
+FROM ubuntu:jammy
+
+COPY --from=builder /go/bin/dlv /
+COPY --from=builder /server /
+
+# 8000/tcp is for the Delve backend
+# 12345/tcp is for our test server
+EXPOSE 8000/tcp 12345/tcp
+
+CMD ["/dlv", "--listen=:8000", "--headless=true", "--api-version=2", "exec", "/server"]
