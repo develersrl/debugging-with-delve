@@ -48,6 +48,7 @@ during the class:
 - [Core Dumps and Snapshots][04]
 - [Containerized Environments][05]
 - [Debuggers Under The Hood][06]
+- [References and Further Readings][07]
 
 Please ask questions and interact freely with the speaker during the workshop!
 
@@ -71,3 +72,4 @@ You can find me on [Twitter] too!
 [04]: https://github.com/develersrl/debugging-with-delve/blob/main/04-core-dumps-and-snapshots
 [05]: https://github.com/develersrl/debugging-with-delve/blob/main/05-containerized-environments
 [06]: https://github.com/develersrl/debugging-with-delve/blob/main/06-debuggers-under-the-hood
+[07]: https://github.com/develersrl/debugging-with-delve/blob/main/07-references
